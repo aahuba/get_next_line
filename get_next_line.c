@@ -6,7 +6,7 @@
 /*   By: ahuba <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/16 15:00:31 by ahuba             #+#    #+#             */
-/*   Updated: 2018/01/28 21:16:14 by ahuba            ###   ########.fr       */
+/*   Updated: 2018/02/02 21:59:43 by ahuba            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ static int		decision(char **content, char **line, char *c, int len)
 	return (1);
 }
 
-static int		get_next_part(const int fd, char **line, char *c, int len)
+int				get_next_line(const int fd, char **line, char *c, int len)
 {
 	char			buf[BUFF_SIZE + 1];
 	static t_list	*gnl;
@@ -77,17 +77,4 @@ static int		get_next_part(const int fd, char **line, char *c, int len)
 				break ;
 		}
 	return (decision((char **)&(cur->content), line, c, len));
-}
-
-int				get_next_line(const int fd, char **line)
-{
-	char	*c;
-	int		len;
-
-	c = "\n";
-	if (!ft_strcmp(c, "\n"))
-		len = 0;
-	else
-		len = ft_strlen(c);
-	return (get_next_part(fd, line, c, len));
 }
